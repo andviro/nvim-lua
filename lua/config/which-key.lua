@@ -160,11 +160,11 @@ wk.register({
 		g = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		B = { "<cmd>GitBlameToggle<cr>", "Toggle Blame" },
-		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-		C = {
-			"<cmd>Telescope git_bcommits<cr>",
-			"Checkout commit(current file)",
-		},
+		c = { "<cmd>Neogit commit<cr>", "git commit" },
+		-- C = {
+		-- 	"<cmd>Telescope git_bcommits<cr>",
+		-- 	"Checkout commit(current file)",
+		-- },
 	},
 	h = {
 		name = "Harpoon",

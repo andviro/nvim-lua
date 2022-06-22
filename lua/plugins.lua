@@ -311,6 +311,7 @@ packer.startup(function(use)
       require("focus").setup()
     end,
   })
+	use({ "mg979/vim-visual-multi" })
 end)
 
 -- TODO: ????

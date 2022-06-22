@@ -39,11 +39,24 @@ end, default_options)
 map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_options)
 
 -- Autocorrect spelling from previous error
-map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", default_options)
+-- map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", default_options)
+
+-- emacs-like insert mode
+map("i", "<C-A>", "<Home>", default_options)
+map("i", "<C-B>", "<Left>", default_options)
+map("i", "<C-B>", "<Left>", default_options)
+map("i", "<C-D>", "<Del>", default_options)
+map("i", "<C-E>", "<End>", default_options)
+map("i", "<C-F>", "<Right>", default_options)
+map("i", "<C-F>", "<Right>", default_options)
+map("i", "<C-N>", "<Down>", default_options)
+map("i", "<C-P>", "<Up>", default_options)
+map("i", "<Esc><C-B>", "<S-Left>", default_options)
+map("i", "<Esc><C-F>", "<S-Right>", default_options)
 
 -- Move selected line / block of text in visual mode
-map("x", "K", ":move '<-2<CR>gv-gv", default_options)
-map("x", "J", ":move '>+1<CR>gv-gv", default_options)
+-- map("x", "<C-P>", ":move '<-2<CR>gv-gv", default_options)
+-- map("x", "<C-N>", ":move '>+1<CR>gv-gv", default_options)
 
 if settings.starlite then
 	-- starlite mappings
