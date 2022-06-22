@@ -71,8 +71,3 @@ if settings.packer_auto_sync then
     callback = sync_packer,
   })
 end
-
-api.nvim_create_autocmd({ "CmdwinEnter" }, {
-	pattern = "*",
-	command = "nunmap <CR>",
-})

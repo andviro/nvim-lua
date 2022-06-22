@@ -110,13 +110,15 @@ function M.custom_lsp_attach(client, bufnr)
   client.server_capabilities.document_formatting = false
   client.server_capabilities.document_range_formatting = false
   -- enable illuminate to intelligently highlight
-  require("illuminate").on_attach(client)
+  -- require("illuminate").on_attach(client)
   -- enable navic for displaying current code context
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
   end
   local wk = require("which-key")
   local default_options = { silent = true }
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<CR>", "<cmd>lua vim.lsp.buf.definition()<CR>", default_options)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", default_options)
   wk.register({
     l = {
       name = "LSP",

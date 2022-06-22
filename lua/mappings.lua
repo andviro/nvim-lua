@@ -25,11 +25,6 @@ map("n", "<Tab>", ":b#<CR>", default_options)
 -- map("n", "<TAB>", ":BufferLineCycleNext<CR>", default_options)
 -- map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", default_options)
 
--- LSP
-map("n", "<CR>", function()
-	return vim.lsp.buf.definition()
-end, default_options)
-
 -- Find files
 map("n", "<C-p>", function()
 	return require("telescope.builtin").find_files()
