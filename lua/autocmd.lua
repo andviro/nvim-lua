@@ -38,23 +38,28 @@ api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buf
 -- disable list option in certain filetypes
 api.nvim_create_autocmd("FileType", { pattern = { "NeoGitStatus" }, command = [[setlocal list!]] })
 
--- show cursor line only in active window
-local cursorGrp = api.nvim_create_augroup("CursorLine", { clear = true })
-api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
-  pattern = "*",
-  command = "set cursorline",
-  group = cursorGrp,
-})
-api.nvim_create_autocmd(
-  { "InsertEnter", "WinLeave" },
-  { pattern = "*", command = "set nocursorline", group = cursorGrp }
-)
+if settings.show_cursorline then
+	-- show cursor line only in active window
+	local cursorGrp = api.nvim_create_augroup("CursorLine", { clear = true })
+	api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+		pattern = "*",
+		command = "set cursorline",
+		group = cursorGrp,
+	})
+	api.nvim_create_autocmd(
+		{ "InsertEnter", "WinLeave" },
+		{ pattern = "*", command = "set nocursorline", group = cursorGrp }
+	)
+end
 
 -- Enable spell checking for certain file types
 api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
   { pattern = { "*.txt", "*.md", "*.tex" }, command = "setlocal spell" }
 )
+
+api.nvim_create_autocmd({ "VimEnter" }, { command = ':silent exec "!kill -s SIGWINCH $PPID"' })
+
 if settings.packer_auto_sync then
   -- source plugins.lua and run PackerSync on save
   local sync_packer = function()
@@ -66,3 +71,8 @@ if settings.packer_auto_sync then
     callback = sync_packer,
   })
 end
+
+api.nvim_create_autocmd({ "CmdwinEnter" }, {
+	pattern = "*",
+	command = "nunmap <CR>",
+})

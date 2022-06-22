@@ -135,12 +135,12 @@ packer.startup(function(use)
     requires = { { "junegunn/fzf", module = "nvim-bqf" }, config = get_config("nvim-bqf") },
   })
 
-  use({
-    "akinsho/nvim-bufferline.lua",
-    requires = "kyazdani42/nvim-web-devicons",
-    event = "BufReadPre",
-    config = get_config("bufferline"),
-  })
+--  use({
+--    "akinsho/nvim-bufferline.lua",
+--    requires = "kyazdani42/nvim-web-devicons",
+--    event = "BufReadPre",
+--    config = get_config("bufferline"),
+--  })
 
   use("famiu/bufdelete.nvim")
 
@@ -172,15 +172,19 @@ packer.startup(function(use)
     config = get_config("toggleterm"),
   })
 
-  use({
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = get_config("todo"),
-  })
+	if settings.todo then
+		use({
+			"folke/todo-comments.nvim",
+			requires = "nvim-lua/plenary.nvim",
+			config = get_config("todo"),
+		})
+	end
 
   use({ "ahmedkhalf/project.nvim", config = get_config("project") })
 
-  use("ironhouzi/starlite-nvim")
+	if settings.starlite then
+		use("ironhouzi/starlite-nvim")
+	end
 
   use({ "folke/which-key.nvim", config = get_config("which-key") })
 
@@ -188,7 +192,9 @@ packer.startup(function(use)
 
   use({ "rhysd/vim-grammarous", cmd = "GrammarousCheck" })
 
-  use({ "RRethy/vim-illuminate", config = get_config("illuminate") })
+	if settings.illuminate then
+		use({ "RRethy/vim-illuminate" })
+	end
 
   use({
     "ptzz/lf.vim",
@@ -196,13 +202,17 @@ packer.startup(function(use)
     config = get_config("lf"),
   })
 
-  if settings.theme == "nightfox" then
-    use({ "EdenEast/nightfox.nvim", config = get_config("nightfox") })
-  elseif settings.theme == "catppuccino" then
-    use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
-  else
-    use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
-  end
+	if settings.theme == "nightfox" then
+		use({ "EdenEast/nightfox.nvim", config = get_config("nightfox") })
+	elseif settings.theme == "catppuccin" then
+		use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
+	elseif settings.theme == "solarized" then
+		use({ "ishan9299/nvim-solarized-lua" })
+		vim.g.solarized_visibility = "low"
+		vim.cmd("colorscheme solarized")
+	else
+		use({ "ishan9299/nvim-solarized-lua", config = get_config("solarized") })
+	end
 
   use({
     "ThePrimeagen/harpoon",
@@ -216,7 +226,9 @@ packer.startup(function(use)
 
   use({ "tweekmonster/startuptime.vim" })
 
-  use({ "ggandor/lightspeed.nvim" })
+	if settings.lightspeed then
+		use({ "ggandor/lightspeed.nvim" })
+	end
 
   use({ "ray-x/go.nvim", config = get_config("go"), ft = { "go" } })
 
@@ -240,7 +252,9 @@ packer.startup(function(use)
 
   use({ "rhysd/conflict-marker.vim" })
 
-  use({ "edluffy/specs.nvim", config = get_config("specs") })
+	if settings.specs then
+		use({ "edluffy/specs.nvim", config = get_config("specs") })
+	end
 
   use({ "mfussenegger/nvim-ts-hint-textobject" })
 

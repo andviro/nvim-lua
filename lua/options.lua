@@ -17,12 +17,17 @@ o.undodir = fn.stdpath("data") .. "/undodir" -- set undo directory
 o.history = 500 -- Use the 'history' option to set the number of lines from command mode that are remembered.
 o.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 o.fileencoding = "utf-8" -- the encoding written to a file
+o.spelllang = { "ru", "en" }
+o.keymap = "russian-yawerty"
+o.iminsert = 0
+o.imsearch = -1
 o.conceallevel = 0 -- so that `` is visible in markdown files
+o.wrap = false
 o.number = settings.number
 o.relativenumber = settings.relative_number
 o.cmdheight = 1 -- space for displaying messages/commands
 o.showmode = false -- we don't need to see things like -- INSERT -- anymore
-o.showtabline = 2 -- always show tabs
+o.showtabline = 1 -- show tabs
 if settings.global_statusline then
   o.laststatus = 3
 else
@@ -36,11 +41,14 @@ o.expandtab = true -- convert tabs to spaces
 o.shiftwidth = 2 -- the number of spaces inserted for each indentation
 o.tabstop = 2 -- how many columns a tab counts for
 o.termguicolors = true -- set term gui colors (most terminals support this)
-o.cursorline = true -- highlight the current line
+o.cursorline = settings.show_cursorline -- highlight the current line
 o.scrolloff = 3 -- Minimal number of screen lines to keep above and below the cursor
 o.sidescrolloff = 5 -- The minimal number of columns to scroll horizontally
-o.hlsearch = true -- highlight all matches on previous search pattern
-o.ignorecase = true -- ignore case in search patterns
+o.hlsearch = false -- highlight all matches on previous search pattern
+o.incsearch = true
+o.showmatch = true
+o.matchtime = 2
+o.infercase = true -- ignore case in search patterns
 o.foldenable = false -- disable folding; enable with zi
 wo.foldcolumn = "1"
 wo.foldcolumn = "1"
@@ -48,12 +56,13 @@ o.list = settings.list
 o.listchars = settings.listchars
 o.shortmess = o.shortmess + "c" -- prevent "pattern not found" messages
 wo.colorcolumn = "99999"
-o.wildmode = "full"
+o.wildmode = "list:longest,full"
+o.wildmenu = true
 o.lazyredraw = true -- do not redraw screen while running macros
 if utils.isNotEmpty(settings.grepprg) then
   o.grepprg = settings.grepprg
 end
-o.completeopt = { "menu", "menuone", "noselect", "noinsert" } -- A comma separated list of options for Insert mode completion
+o.completeopt = { "menuone", "noselect", "noinsert" } -- A comma separated list of options for Insert mode completion
 o.wildignorecase = true -- When set case is ignored when completing file names and directories
 o.wildignore = [[
 .git,.hg,.svn
