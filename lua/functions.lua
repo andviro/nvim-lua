@@ -118,6 +118,7 @@ function M.custom_lsp_attach(client, bufnr)
   local wk = require("which-key")
   local default_options = { silent = true }
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<CR>", "<cmd>lua vim.lsp.buf.definition()<CR>", default_options)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-j>", "<cmd>Telescope lsp_document_symbols<cr>", default_options)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", default_options)
   wk.register({
     l = {

@@ -1,10 +1,10 @@
 -- more mappings are defined in `lua/config/which.lua`
 local map = vim.keymap.set
 local default_options = { silent = true }
+local nore_options = { silent = true, remap = false }
 local expr_options = { expr = true, silent = true }
 local settings = require("user-conf")
 
---Remap space as leader key
 vim.g.mapleader = ";"
 map({ "n", "v" }, "<Space>", "<C-f>", { silent = true })
 map({ "n", "v", "i" }, "<C-\\>", "<C-^>", { silent = true })
@@ -12,6 +12,9 @@ map({ "n", "v", "i" }, "<C-Space>", "<C-^>", { silent = true })
 
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_options)
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_options)
+
+map("n", "H", "<C-o>", nore_options)
+map("n", "L", "<C-i>", nore_options)
 
 -- better indenting
 map("v", "<", "<gv", default_options)
@@ -53,6 +56,10 @@ map("i", "<C-N>", "<Down>", default_options)
 map("i", "<C-P>", "<Up>", default_options)
 map("i", "<Esc><C-B>", "<S-Left>", default_options)
 map("i", "<Esc><C-F>", "<S-Right>", default_options)
+
+-- mitigate insert-mode hell
+map("i", "<c-u>", "<c-g>u<c-u>", nore_options)
+map("i", "<c-w>", "<c-g>u<c-w>", nore_options)
 
 -- Move selected line / block of text in visual mode
 -- map("x", "<C-P>", ":move '<-2<CR>gv-gv", default_options)
