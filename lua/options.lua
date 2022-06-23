@@ -34,6 +34,7 @@ else
   o.laststatus = 2
 end
 o.smartcase = true -- smart case
+o.ignorecase = true -- ignore case
 o.smartindent = true -- make indenting smarter again
 o.splitbelow = true -- force all horizontal splits to go below current window
 o.splitright = true -- force all vertical splits to go to the right of current window

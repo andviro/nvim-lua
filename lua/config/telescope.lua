@@ -40,7 +40,7 @@ telescope.setup({
     -- find_command = { "fd", "--hidden", "--type", "file", "--follow", "--strip-cwd-prefix" },
   },
   defaults = {
-    file_ignore_patterns = { "node_modules", ".terraform", "%.jpg", "%.png" },
+    file_ignore_patterns = { "node_modules", ".terraform", "%.jpg", "%.png", "vendor", ".env", ".venv", ".git" },
     -- used for grep_string and live_grep
     vimgrep_arguments = {
       "rg",
@@ -92,7 +92,7 @@ telescope.setup({
       width = 0.95,
       height = 0.85,
       -- preview_cutoff = 120,
-      prompt_position = "top",
+      prompt_position = "bottom",
       horizontal = {
         preview_width = function(_, cols, _)
           if cols > 200 then
