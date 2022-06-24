@@ -35,7 +35,7 @@ end, default_options)
 
 -- Old files
 map("n", "<C-h>", function()
-	return require("telescope.builtin").oldfiles()
+	return require("telescope").extensions.frecency.frecency()
 end, default_options)
 
 -- Cancel search highlighting with ESC
@@ -45,17 +45,17 @@ map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_options)
 -- map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", default_options)
 
 -- emacs-like insert mode
-map("i", "<C-A>", "<Home>", default_options)
-map("i", "<C-B>", "<Left>", default_options)
-map("i", "<C-B>", "<Left>", default_options)
-map("i", "<C-D>", "<Del>", default_options)
-map("i", "<C-E>", "<End>", default_options)
-map("i", "<C-F>", "<Right>", default_options)
-map("i", "<C-F>", "<Right>", default_options)
-map("i", "<C-N>", "<Down>", default_options)
-map("i", "<C-P>", "<Up>", default_options)
-map("i", "<Esc><C-B>", "<S-Left>", default_options)
-map("i", "<Esc><C-F>", "<S-Right>", default_options)
+map("c", "<C-A>", "<Home>", nore_options)
+map("i", "<C-B>", "<Left>", nore_options)
+map("c", "<C-B>", "<Left>", nore_options)
+map("c", "<C-D>", "<Del>", nore_options)
+map("c", "<C-E>", "<End>", nore_options)
+map("c", "<C-F>", "<Right>", nore_options)
+map("i", "<C-F>", "<Right>", nore_options)
+map("c", "<C-N>", "<Down>", nore_options)
+map("c", "<C-P>", "<Up>", nore_options)
+map("c", "<Esc><C-B>", "<S-Left>", nore_options)
+map("c", "<Esc><C-F>", "<S-Right>", nore_options)
 
 -- mitigate insert-mode hell
 map("i", "<c-u>", "<c-g>u<c-u>", nore_options)

@@ -136,7 +136,7 @@ wk.register({
 		},
 		l = { "<cmd>Lf<cr>", "Open LF" },
 		p = { "<cmd>NvimTreeToggle<cr>", "Toggle Tree" },
-		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+		r = { "<cmd>Telescope frecency<cr>", "Open Recent File" },
 		s = { "<cmd>w<cr>", "Save Buffer" },
 		T = { "<cmd>NvimTreeFindFile<CR>", "Find in Tree" },
 		z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },

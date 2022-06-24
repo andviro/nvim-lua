@@ -1,6 +1,8 @@
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local feedkeys = require("cmp.utils.feedkeys")
+local keymap = require("cmp.utils.keymap")
 
 cmp.setup({
   formatting = {
@@ -31,7 +33,7 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
+			select = true,
 		}),
 		["<C-j>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -40,9 +42,11 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<C-k>"] = cmp.mapping(function()
+		["<C-k>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
+			else
+				fallback()
 			end
 		end, { "i", "s" }),
 	},
@@ -59,9 +63,53 @@ cmp.setup({
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline("/", {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = "buffer" },
-  },
+-- cmp.setup.cmdline("/", {
+-- 	mapping = cmp.mapping.preset.cmdline(),
+-- 	sources = {
+-- 		{ name = "buffer" },
+-- 	},
+-- })
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline({
+		["<C-n>"] = {
+			c = function()
+				feedkeys.call(keymap.t("<C-n>"), "n")
+			end,
+		},
+		["<C-p>"] = {
+			c = function()
+				feedkeys.call(keymap.t("<C-p>"), "n")
+			end,
+		},
+		["<C-e>"] = {
+			c = function()
+				feedkeys.call(keymap.t("<End>"), "n")
+			end,
+		},
+		["<C-a>"] = {
+			c = function()
+				feedkeys.call(keymap.t("<Home>"), "n")
+			end,
+		},
+		["<C-b>"] = {
+			c = function()
+				feedkeys.call(keymap.t("<Left>"), "n")
+			end,
+		},
+		["<C-f>"] = {
+			c = function()
+				feedkeys.call(keymap.t("<Right>"), "n")
+			end,
+		},
+		["<C-g>"] = {
+			c = cmp.mapping.close(),
+		},
+	}),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
 })
