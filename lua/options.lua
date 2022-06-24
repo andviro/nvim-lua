@@ -10,6 +10,7 @@ o.updatetime = 300 -- faster completion
 o.timeoutlen = 400 -- time to wait for a mapped sequence to complete (in milliseconds)
 o.ttimeoutlen = 0 -- Time in milliseconds to wait for a key code sequence to complete
 o.backup = false -- creates a backup file
+o.backupdir = { "$XDG_STATE_HOME/nvim/backup//", "." }
 o.swapfile = true -- enable/disable swap file creation
 o.dir = fn.stdpath("data") .. "/swp" -- swap file directory
 o.undofile = true -- enable/disable undo file creation
