@@ -17,7 +17,8 @@ o.undofile = true -- enable/disable undo file creation
 o.backup = true
 o.title = true
 o.undodir = fn.stdpath("data") .. "/undo" -- set undo directory
-o.history = 1000 -- Use the 'history' option to set the number of lines from command mode that are remembered.
+o.shadafile = fn.stdpath("data") .. "/shada/main.shada" -- set shada directory
+o.history = 10000 -- Use the 'history' option to set the number of lines from command mode that are remembered.
 o.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 o.fileencoding = "utf-8" -- the encoding written to a file
 o.spelllang = { "ru", "en" }
@@ -36,6 +37,10 @@ if settings.global_statusline then
 else
   o.laststatus = 2
 end
+o.autoread = true
+o.autowrite = true
+o.hidden = true
+o.sessionoptions:remove("options")
 o.smartcase = true -- smart case
 o.ignorecase = true -- ignore case
 o.smartindent = true -- make indenting smarter again
