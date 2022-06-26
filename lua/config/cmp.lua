@@ -75,12 +75,12 @@ cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline({
 		["<C-n>"] = {
 			c = function()
-				feedkeys.call(keymap.t("<C-n>"), "n")
+				feedkeys.call(keymap.t("<Down>"), "n")
 			end,
 		},
 		["<C-p>"] = {
 			c = function()
-				feedkeys.call(keymap.t("<C-p>"), "n")
+				feedkeys.call(keymap.t("<Up>"), "n")
 			end,
 		},
 		["<C-e>"] = {
