@@ -35,7 +35,8 @@ end, default_options)
 
 -- Old files
 map("n", "<C-h>", function()
-	return require("telescope").extensions.frecency.frecency()
+	-- return require("telescope").extensions.frecency.frecency()
+	return require("telescope.builtin").oldfiles()
 end, default_options)
 
 -- Cancel search highlighting with ESC

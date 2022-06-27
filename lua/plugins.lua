@@ -99,42 +99,6 @@ packer.startup(function(use)
     config = get_config("luasnip"),
   })
 
-  -- requirement for Neogit
-  use({
-    "sindrets/diffview.nvim",
-    cmd = {
-      "DiffviewOpen",
-      "DiffviewClose",
-      "DiffviewToggleFiles",
-      "DiffviewFocusFiles",
-    },
-    config = get_config("diffview"),
-  })
-
-  use({
-    "TimUntersberger/neogit",
-    requires = { "nvim-lua/plenary.nvim" },
-    cmd = "Neogit",
-    config = get_config("neogit"),
-  })
-
-  use({ "f-person/git-blame.nvim", config = get_config("git-blame") })
-
-  use({
-    "lewis6991/gitsigns.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = get_config("gitsigns"),
-  })
-
-  use({ "tpope/vim-fugitive" }) -- yeah this is not lua but one of the best Vim plugins ever
-
-  use("p00f/nvim-ts-rainbow")
-
-  use({
-    "kevinhwang91/nvim-bqf",
-    requires = { { "junegunn/fzf", module = "nvim-bqf" }, config = get_config("nvim-bqf") },
-  })
-
 --  use({
 --    "akinsho/nvim-bufferline.lua",
 --    requires = "kyazdani42/nvim-web-devicons",
@@ -265,53 +229,6 @@ packer.startup(function(use)
   })
 
   use({ "SmiteshP/nvim-navic" })
-
-  use({
-    "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup({})
-    end,
-  })
-
-  use({
-    "kevinhwang91/nvim-ufo",
-    requires = "kevinhwang91/promise-async",
-    config = function()
-      require("ufo").setup()
-    end,
-  })
-
-  use({
-    "https://gitlab.com/yorickpeterse/nvim-pqf.git",
-    config = function()
-      require("pqf").setup()
-    end,
-  })
-
-  use({ "Djancyp/cheat-sheet" })
-
-  use({ "vimpostor/vim-tpipeline" })
-
-  use({
-    "anuvyklack/hydra.nvim",
-    requires = "anuvyklack/keymap-layer.nvim", -- needed only for pink hydras
-    config = get_config("hydra"),
-  })
-
-  use({
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  })
-
-  use({
-    "beauwilliams/focus.nvim",
-    config = function()
-      require("focus").setup()
-    end,
-  })
-	use({ "mg979/vim-visual-multi" })
 end)
 
 -- TODO: ????

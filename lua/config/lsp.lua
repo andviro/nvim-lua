@@ -131,6 +131,7 @@ for _, lsp in ipairs(servers) do
         latexFormatter = "latexindent",
         latexindent = { modifyLineBreaks = false },
       },
+      dockerls = {},
       yaml = {
         schemaStore = {
           enable = true,
