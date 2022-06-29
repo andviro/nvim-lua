@@ -93,7 +93,7 @@ wk.register({
 
 -- Register all leader based mappings
 wk.register({
-	["<Tab>"] = { "<cmd>e#<cr>", "Prev buffer" },
+	["<Tab>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle NvimTree" },
 	["<leader>"] = {
 		name = "Leader",
 		a = { "<cmd>lua print('fasfAS')<cr>", "test" },
