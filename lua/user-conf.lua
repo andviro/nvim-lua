@@ -9,9 +9,9 @@ M.grepprg = "rg --hidden --vimgrep --smart-case --"
 -- set numbered lines
 M.number = true
 -- set relative numbered lines
-M.relative_number = true
+M.relative_number = false
 -- enable or disable listchars
-M.list = true
+M.list = false
 -- which list chars to schow
 -- M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
