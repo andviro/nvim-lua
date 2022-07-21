@@ -135,6 +135,7 @@ packer.startup(function(use)
 	use({ "tpope/vim-fugitive" }) -- yeah this is not lua but one of the best Vim plugins ever
 
 	use({ "mbbill/undotree" }) -- ditto
+	use({ "mg979/vim-visual-multi" }) -- ditto
 
 	use("p00f/nvim-ts-rainbow")
 
