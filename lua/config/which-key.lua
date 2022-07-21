@@ -99,7 +99,7 @@ wk.register({
 		a = { "<cmd>lua print('fasfAS')<cr>", "test" },
 	},
 	["<CR>"] = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
-	u = { "<cmd>MundoToggle<cr>", "Mundo" },
+	u = { "<cmd>UndotreeToggle<cr>", "Undo tree" },
 	b = {
 		name = "Buffers",
 		b = {
