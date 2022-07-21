@@ -99,6 +99,7 @@ wk.register({
 		a = { "<cmd>lua print('fasfAS')<cr>", "test" },
 	},
 	["<CR>"] = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+	u = { "<cmd>MundoToggle<cr>", "Mundo" },
 	b = {
 		name = "Buffers",
 		b = {
@@ -146,21 +147,26 @@ wk.register({
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		l = { "<cmd>Telescope git_commits<cr>", "Log" },
-		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+		-- p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-		S = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer" },
+		-- s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+		-- S = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer" },
 		t = "Open Gitui", -- command in toggleterm.lua
-		n = { "<cmd>Neogit<cr>", "Open Neogit" },
-		u = {
-			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-			"Undo Stage Hunk",
-		},
+		s = { "<cmd>Git<cr>", "Git status" },
+		a = { "<cmd>Git add %<cr>", "Git add buffer" },
+		A = { "<cmd>Git add -A .<cr>", "Git add all" },
+		-- u = {
+		-- 	"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+		-- 	"Undo Stage Hunk",
+		-- },
 		g = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		B = { "<cmd>GitBlameToggle<cr>", "Toggle Blame" },
-		c = { "<cmd>Neogit commit<cr>", "git commit" },
+		c = { "<cmd>Git commit -v<cr>", "Git commit" },
+		C = { "<cmd>Git commit -a -v<cr>", "Git commit -a" },
+		p = { "<cmd>Git push -u origin HEAD<cr>", "Git push" },
+		u = { "<cmd>Git pull<cr>", "Git pull" },
 		-- C = {
 		-- 	"<cmd>Telescope git_bcommits<cr>",
 		-- 	"Checkout commit(current file)",
