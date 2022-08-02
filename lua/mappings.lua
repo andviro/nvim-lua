@@ -6,9 +6,10 @@ local expr_options = { expr = true, silent = true }
 local settings = require("user-conf")
 
 vim.g.mapleader = ";"
-map({ "n", "v" }, "<Space>", "<C-f>", { silent = true })
-map({ "n", "v", "i" }, "<C-\\>", "<C-^>", { silent = true })
-map({ "n", "v", "i" }, "<C-Space>", "<C-^>", { silent = true })
+map({ "n", "v" }, "<Space>", "<C-f>", nore_options)
+map({ "n", "v", "i" }, "<C-\\>", "<C-^>", nore_options)
+map({ "n", "v", "i" }, "<C-Space>", "<C-^>", nore_options)
+map({"n"}, "<C-j>", "<cmd>Telescope live_grep<cr>", nore_options)
 
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_options)
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_options)

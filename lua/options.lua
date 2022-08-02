@@ -39,6 +39,8 @@ else
 	o.laststatus = 2
 end
 o.autoread = true
+o.autoindent = true
+o.formatoptions = "jcroql"
 o.autowrite = true
 o.hidden = true
 o.sessionoptions:remove("options")
@@ -48,6 +50,7 @@ o.smartindent = true -- make indenting smarter again
 o.splitbelow = true -- force all horizontal splits to go below current window
 o.splitright = true -- force all vertical splits to go to the right of current window
 o.expandtab = true -- convert tabs to spaces
+o.smarttab = true -- convert tabs to spaces
 o.shiftwidth = 2 -- the number of spaces inserted for each indentation
 o.tabstop = 2 -- how many columns a tab counts for
 o.termguicolors = true -- set term gui colors (most terminals support this)

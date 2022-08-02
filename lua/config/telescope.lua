@@ -4,6 +4,7 @@ local action_layout = require("telescope.actions.layout")
 local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup({
+  preview = true,
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching
@@ -40,7 +41,16 @@ telescope.setup({
     -- find_command = { "fd", "--hidden", "--type", "file", "--follow", "--strip-cwd-prefix" },
   },
   defaults = {
-    file_ignore_patterns = { "node_modules", ".terraform", "%.jpg", "%.png", "vendor", ".env", ".venv", ".git" },
+    file_ignore_patterns = {
+      "/node_modules",
+      "/.terraform",
+      "%.jpg",
+      "%.png",
+      "/vendor",
+      "/.env",
+      "/.venv",
+      "/.git",
+    },
     -- used for grep_string and live_grep
     vimgrep_arguments = {
       "rg",
