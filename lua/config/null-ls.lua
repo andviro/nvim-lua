@@ -7,10 +7,10 @@ nls.setup({
 		nls.builtins.formatting.prettier.with({
 			extra_args = { "--single-quote", "false" },
 		}),
+		nls.builtins.formatting.fixjson,
 		nls.builtins.formatting.terraform_fmt,
 		nls.builtins.formatting.black,
 		nls.builtins.formatting.goimports,
-		-- nls.builtins.formatting.goimports_reviser,
 		nls.builtins.formatting.gofumpt,
 		nls.builtins.formatting.latexindent.with({
 			extra_args = { "-g", "/dev/null" }, -- https://github.com/cmhughes/latexindent.pl/releases/tag/V3.9.3
@@ -22,6 +22,7 @@ nls.setup({
 		if client.supports_method("textDocument/formatting") then
 			-- client.resolved_capabilities.document_formatting = false
 			-- client.resolved_capabilities.document_range_formatting = false
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				buffer = bufnr,
