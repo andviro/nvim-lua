@@ -10,6 +10,7 @@ nls.setup({
 		nls.builtins.formatting.terraform_fmt,
 		nls.builtins.formatting.black,
 		nls.builtins.formatting.goimports,
+		-- nls.builtins.formatting.goimports_reviser,
 		nls.builtins.formatting.gofumpt,
 		nls.builtins.formatting.latexindent.with({
 			extra_args = { "-g", "/dev/null" }, -- https://github.com/cmhughes/latexindent.pl/releases/tag/V3.9.3
@@ -19,22 +20,24 @@ nls.setup({
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
+			-- client.resolved_capabilities.document_formatting = false
+			-- client.resolved_capabilities.document_range_formatting = false
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
+					vim.lsp.buf.formatting_sync({ bufnr = bufnr })
 				end,
 			})
-			vim.api.nvim_create_autocmd("QuitPre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.cmd.echo('"bye"')
-					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-				end,
-			})
+			-- vim.api.nvim_create_autocmd("QuitPre", {
+			--   group = augroup,
+			--   buffer = bufnr,
+			--   callback = function()
+			--     vim.cmd('echo "bye"')
+			--     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			--   end,
+			-- })
 		end
-		require("functions").custom_lsp_attach(client, bufnr)
+		-- require("functions").custom_lsp_attach(client, bufnr)
 	end,
 })

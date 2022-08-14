@@ -37,7 +37,6 @@ local servers = {
   "texlab",
   "tsserver",
   "yamlls",
-  "gopls",
 }
 -- Use a loop to conveniently call 'setup' on multiple servers
 for _, lsp in ipairs(servers) do
