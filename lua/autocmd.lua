@@ -10,6 +10,7 @@ api.nvim_create_autocmd("BufWritePre", {
 
 -- don't auto comment new line
 -- api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
+api.nvim_create_autocmd("BufEnter", { command = [[silent! lcd <afile>:p:h]] })
 
 -- Close nvim if NvimTree is only running buffer
 api.nvim_create_autocmd(

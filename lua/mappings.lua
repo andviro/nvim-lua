@@ -9,7 +9,7 @@ vim.g.mapleader = ";"
 map({ "n", "v" }, "<Space>", "<C-f>", nore_options)
 map({ "n", "v", "i" }, "<C-\\>", "<C-^>", nore_options)
 map({ "n", "v", "i" }, "<C-Space>", "<C-^>", nore_options)
-map({"n"}, "<C-j>", "<cmd>Telescope live_grep<cr>", nore_options)
+map({ "n" }, "<C-j>", "<cmd>Telescope live_grep<cr>", nore_options)
 
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_options)
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_options)
@@ -31,7 +31,7 @@ map("n", "<Tab>", ":b#<CR>", default_options)
 
 -- Find files
 map("n", "<C-p>", function()
-	return require("telescope.builtin").find_files()
+	return require("telescope.builtin").git_files({ use_git_root = true })
 end, default_options)
 
 -- Old files
@@ -85,7 +85,7 @@ end
 
 -- move over a closing element in insert mode
 map("i", "<C-l>", function()
-  return require("functions").escapePair()
+	return require("functions").escapePair()
 end, default_options)
 map("i", "<C-l>", function()
 	return require("functions").escapePair()

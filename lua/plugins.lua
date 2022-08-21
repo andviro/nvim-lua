@@ -156,17 +156,17 @@ packer.startup(function(use)
 		config = get_config("null-ls"),
 	})
 
-	use({
-		"simrat39/symbols-outline.nvim",
-		cmd = { "SymbolsOutline" },
-		config = get_config("symbols"),
-	})
-
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPre",
-		config = [[require("config/indent-blankline")]],
-	})
+	-- use({
+	-- 	"simrat39/symbols-outline.nvim",
+	-- 	cmd = { "SymbolsOutline" },
+	-- 	config = get_config("symbols"),
+	-- })
+	--
+	-- use({
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	event = "BufReadPre",
+	-- 	config = [[require("config/indent-blankline")]],
+	-- })
 
 	use({
 		"akinsho/nvim-toggleterm.lua",
@@ -182,7 +182,7 @@ packer.startup(function(use)
 		})
 	end
 
-	use({ "ahmedkhalf/project.nvim", config = get_config("project") })
+	-- use({ "ahmedkhalf/project.nvim", config = get_config("project") })
 
 	if settings.starlite then
 		use("ironhouzi/starlite-nvim")
