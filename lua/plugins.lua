@@ -146,6 +146,8 @@ packer.startup(function(use)
 
 	use("famiu/bufdelete.nvim")
 
+	use("s3rvac/AutoFenc")
+
 	use({ "neovim/nvim-lspconfig", config = get_config("lsp") })
 
 	use({ "onsails/lspkind-nvim", requires = { "famiu/bufdelete.nvim" } })
