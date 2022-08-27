@@ -4,6 +4,17 @@ local settings = require("user-conf")
 
 local M = {}
 
+M.my_fd = function(opts)
+	opts = opts or {}
+	opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+	if vim.v.shell_error ~= 0 then
+		-- if not git then active lsp client root
+		-- will get the configured root directory of the first attached lsp. You will have problems if you are using multiple lsps
+		opts.cwd = vim.lsp.get_active_clients()[1].config.root_dir
+	end
+	require("telescope.builtin").find_files(opts)
+end
+
 -- check if a variable is not empty nor nil
 M.isNotEmpty = function(s)
 	return s ~= nil and s ~= ""

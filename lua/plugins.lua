@@ -56,7 +56,7 @@ packer.startup(function(use)
 
 	use({ "kyazdani42/nvim-tree.lua", config = get_config("nvim-tree") })
 
-	use({ "numToStr/Navigator.nvim", config = get_config("navigator") })
+	-- use({ "numToStr/Navigator.nvim", config = get_config("navigator") })
 
 	use({
 		"nvim-lualine/lualine.nvim",

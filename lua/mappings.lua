@@ -31,7 +31,7 @@ map("n", "<Tab>", ":b#<CR>", default_options)
 
 -- Find files
 map("n", "<C-p>", function()
-	return require("telescope.builtin").git_files({ use_git_root = true })
+	return require("functions").my_fd()
 end, default_options)
 
 -- Old files
