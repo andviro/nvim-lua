@@ -10,7 +10,12 @@ M.my_fd = function(opts)
 	if vim.v.shell_error ~= 0 then
 		-- if not git then active lsp client root
 		-- will get the configured root directory of the first attached lsp. You will have problems if you are using multiple lsps
-		opts.cwd = vim.lsp.get_active_clients()[1].config.root_dir
+		local client = vim.lsp.get_active_clients()[1]
+		if client then
+			opts.cwd = client.config.root_dir
+		else
+			opts.cwd = vim.fn.expand("%:p:h")
+		end
 	end
 	require("telescope.builtin").find_files(opts)
 end
