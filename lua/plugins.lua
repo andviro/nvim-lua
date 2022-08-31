@@ -164,11 +164,11 @@ packer.startup(function(use)
 	-- 	config = get_config("symbols"),
 	-- })
 	--
-	-- use({
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	event = "BufReadPre",
-	-- 	config = [[require("config/indent-blankline")]],
-	-- })
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		event = "BufReadPre",
+		config = [[require("config/indent-blankline")]],
+	})
 
 	use({
 		"akinsho/nvim-toggleterm.lua",
