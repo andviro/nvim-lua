@@ -9,17 +9,19 @@ local function get_config(name)
 	return string.format('require("config/%s")', name)
 end
 
--- bootstrap packer if not installed
-if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({
-		"git",
-		"clone",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	print("Installing packer...")
-	vim.api.nvim_command("packadd packer.nvim")
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
+
+-- bootstrap packer if not installed
+local packer_bootstrap = ensure_packer()
 
 -- initialize and configure packer
 local packer = require("packer")
@@ -45,6 +47,7 @@ packer.startup(function(use)
 		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
 		config = get_config("telescope"),
 	})
+	use({ "folke/which-key.nvim", config = get_config("which-key") })
 
 	use({ "jvgrootveld/telescope-zoxide" })
 	use({ "crispgm/telescope-heading.nvim" })
@@ -82,6 +85,12 @@ packer.startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 
 	use("RRethy/nvim-treesitter-endwise")
+
+	use({ "neovim/nvim-lspconfig", config = get_config("lsp") })
+
+	use({ "onsails/lspkind-nvim", requires = { "famiu/bufdelete.nvim" } })
+
+	use({ "SmiteshP/nvim-navic" })
 
 	use({
 		"hrsh7th/nvim-cmp",
@@ -148,10 +157,6 @@ packer.startup(function(use)
 
 	use("s3rvac/AutoFenc")
 
-	use({ "neovim/nvim-lspconfig", config = get_config("lsp") })
-
-	use({ "onsails/lspkind-nvim", requires = { "famiu/bufdelete.nvim" } })
-
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
@@ -190,8 +195,6 @@ packer.startup(function(use)
 		use("ironhouzi/starlite-nvim")
 	end
 
-	use({ "folke/which-key.nvim", config = get_config("which-key") })
-
 	use("junegunn/vim-easy-align") -- no lua alternative, https://github.com/Vonr/align.nvim not working for me
 
 	use({ "rhysd/vim-grammarous", cmd = "GrammarousCheck" })
@@ -211,9 +214,8 @@ packer.startup(function(use)
 	elseif settings.theme == "catppuccin" then
 		use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
 	elseif settings.theme == "solarized" then
-		use({ "ishan9299/nvim-solarized-lua" })
+		use({ "ishan9299/nvim-solarized-lua", config = get_config("solarized") })
 		vim.g.solarized_visibility = "low"
-		vim.cmd("colorscheme solarized")
 	else
 		use({ "ishan9299/nvim-solarized-lua", config = get_config("solarized") })
 	end
@@ -267,8 +269,6 @@ packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = get_config("alpha-nvim"),
 	})
-
-	use({ "SmiteshP/nvim-navic" })
 
 	use({
 		"j-hui/fidget.nvim",

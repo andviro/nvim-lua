@@ -1,6 +1,15 @@
 local nls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local augroupCtl = vim.api.nvim_create_augroup("LspFormattingCtl", {})
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
 nls.setup({
 	sources = {
 		nls.builtins.formatting.stylua.with({ "--indent_type", "Spaces" }),
@@ -30,7 +39,7 @@ nls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.formatting_sync({ bufnr = bufnr })
+					lsp_formatting(bufnr)
 				end,
 			})
 			vim.api.nvim_create_autocmd("BufLeave", {
@@ -49,7 +58,7 @@ nls.setup({
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
-							vim.lsp.buf.formatting_sync({ bufnr = bufnr })
+							lsp_formatting(bufnr)
 						end,
 					})
 				end,

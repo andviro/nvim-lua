@@ -31,12 +31,13 @@ o.wrap = false
 o.number = settings.number
 o.relativenumber = settings.relative_number
 o.cmdheight = 1 -- space for displaying messages/commands
-o.showmode = false -- we don't need to see things like -- INSERT -- anymore
 o.showtabline = 1 -- show tabs
 if settings.global_statusline then
 	o.laststatus = 3
+	o.showmode = false -- we don't need to see things like -- INSERT -- anymore
 else
-	o.laststatus = 2
+	o.laststatus = 1
+	o.showmode = true
 end
 o.autoread = true
 o.autoindent = true
