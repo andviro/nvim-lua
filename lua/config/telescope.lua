@@ -102,7 +102,7 @@ telescope.setup({
 		layout_config = {
 			width = 0.95,
 			height = 0.85,
-			-- preview_cutoff = 120,
+			preview_cutoff = 120,
 			prompt_position = "bottom",
 			horizontal = {
 				preview_width = function(_, cols, _)

@@ -6,9 +6,16 @@ local expr_options = { expr = true, silent = true }
 local settings = require("user-conf")
 
 vim.g.mapleader = ";"
-map({ "n", "v" }, "<Space>", "<C-f>", nore_options)
-map({ "n", "v", "i" }, "<C-\\>", "<C-^>", nore_options)
-map({ "n", "v", "i" }, "<C-Space>", "<C-^>", nore_options)
+map({ "n" }, "<Space>", "<C-f>", nore_options)
+
+map({ "c", "i" }, "<C-\\>", "<C-^>", nore_options)
+map({ "c", "i" }, "<C-/>", "<C-^>", nore_options)
+map({ "c", "i" }, "<C-Space>", "<C-^>", nore_options)
+
+map({ "n" }, "<C-/>", ":let &l:iminsert = !&l:iminsert<CR>", nore_options)
+map({ "n" }, "<C-\\>", ":let &l:iminsert = !&l:iminsert<CR>", nore_options)
+map({ "n" }, "<C-Space>", ":let &l:iminsert = !&l:iminsert<CR>", nore_options)
+
 map({ "n" }, "<C-j>", "<cmd>Telescope live_grep<cr>", nore_options)
 
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_options)
@@ -18,8 +25,8 @@ map("n", "H", "<C-o>", nore_options)
 map("n", "L", "<C-i>", nore_options)
 
 -- better indenting
-map("v", "<", "<gv", default_options)
-map("v", ">", ">gv", default_options)
+-- map("v", "<", "<gv", default_options)
+-- map("v", ">", ">gv", default_options)
 
 -- paste over currently selected text without yanking it
 map("v", "p", '"_dP', default_options)
@@ -84,9 +91,6 @@ if settings.starlite then
 end
 
 -- move over a closing element in insert mode
-map("i", "<C-l>", function()
-	return require("functions").escapePair()
-end, default_options)
-map("i", "<C-l>", function()
+map("i", "<C-f>", function()
 	return require("functions").escapePair()
 end, default_options)
