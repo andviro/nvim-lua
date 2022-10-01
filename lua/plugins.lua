@@ -13,7 +13,15 @@ local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		fn.system({
+			"git",
+			"clone",
+			"--branch",
+			"bc9ede4305f81d1aad9708a33786c012d1f5b9bc",
+			"https://github.com/wbthomason/packer.nvim",
+			install_path,
+		})
+		fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
 		vim.cmd([[packadd packer.nvim]])
 		return true
 	end
@@ -40,7 +48,10 @@ packer.init({
 
 packer.startup(function(use)
 	-- actual plugins list
-	use("wbthomason/packer.nvim")
+	use({
+		"wbthomason/packer.nvim",
+		commit = "bc9ede4305f81d1aad9708a33786c012d1f5b9bc",
+	})
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -109,7 +120,7 @@ packer.startup(function(use)
 
 	use({ "rafamadriz/friendly-snippets" })
 	use({
-		"L3MON4D3/LuaSnip",
+		"L3MON4D3/LuaS:checkhealth nvim-treesitternip",
 		requires = "saadparwaiz1/cmp_luasnip",
 		config = get_config("luasnip"),
 	})

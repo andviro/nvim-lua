@@ -29,7 +29,7 @@ map("n", "L", "<C-i>", nore_options)
 -- map("v", ">", ">gv", default_options)
 
 -- paste over currently selected text without yanking it
-map("v", "p", '"_dP', default_options)
+-- map("v", "p", '"_dP', default_options)
 
 -- Tab switch buffer
 map("n", "<Tab>", ":b#<CR>", default_options)
