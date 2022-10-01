@@ -120,7 +120,7 @@ packer.startup(function(use)
 
 	use({ "rafamadriz/friendly-snippets" })
 	use({
-		"L3MON4D3/LuaS:checkhealth nvim-treesitternip",
+		"L3MON4D3/LuaSnip",
 		requires = "saadparwaiz1/cmp_luasnip",
 		config = get_config("luasnip"),
 	})
