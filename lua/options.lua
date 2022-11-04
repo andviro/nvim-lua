@@ -28,6 +28,7 @@ o.iminsert = 0
 o.imsearch = -1
 o.conceallevel = 0 -- so that `` is visible in markdown files
 o.wrap = false
+o.textwidth = 79
 o.number = settings.number
 o.relativenumber = settings.relative_number
 o.cmdheight = 1 -- space for displaying messages/commands

@@ -21,7 +21,7 @@ local function get_python_path(workspace)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
@@ -37,6 +37,7 @@ local servers = {
 	"texlab",
 	"tsserver",
 	"yamlls",
+	"bufls",
 }
 -- Use a loop to conveniently call 'setup' on multiple servers
 for _, lsp in ipairs(servers) do
@@ -51,6 +52,18 @@ for _, lsp in ipairs(servers) do
 		end,
 		capabilities = capabilities,
 		settings = {
+			bufls = {
+				cmd = { "bufls", "serve" },
+				filetypes = { "proto" },
+			},
+			pls = {
+				cmd = { "pls", "serve" },
+				filetypes = { "proto" },
+			},
+			pbls = {
+				cmd = "pbls",
+				filetypes = { "proto" },
+			},
 			jsonls = {
 				cmd = { "vscode-json-language-server", "--stdio" },
 				format = { enabled = false },

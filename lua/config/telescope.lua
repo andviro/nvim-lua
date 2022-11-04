@@ -42,15 +42,15 @@ telescope.setup({
 	},
 	defaults = {
 		file_ignore_patterns = {
-			"node_modules",
-			".terraform",
+			"^node_modules/",
+			"^.terraform/",
 			"%.jpg",
 			"%.png",
-			"^vendor",
-			"^proto_vendor",
-			"^.env",
-			"^.venv",
-			"^.git",
+			"^vendor/",
+			"^proto_vendor/",
+			"^.env/",
+			"^.venv/",
+			"^.git/",
 		},
 		-- used for grep_string and live_grep
 		vimgrep_arguments = {

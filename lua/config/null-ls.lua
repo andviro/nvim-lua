@@ -14,9 +14,9 @@ nls.setup({
 	sources = {
 		nls.builtins.formatting.stylua.with({ "--indent_type", "Spaces" }),
 		nls.builtins.diagnostics.eslint,
-		nls.builtins.formatting.prettier.with({
-			extra_args = { "--single-quote", "false" },
-		}),
+		nls.builtins.diagnostics.buf,
+		nls.builtins.formatting.buf,
+		nls.builtins.formatting.prettierd,
 		nls.builtins.formatting.fixjson,
 		nls.builtins.formatting.terraform_fmt,
 		nls.builtins.formatting.black,
@@ -26,7 +26,7 @@ nls.setup({
 			extra_args = { "-g", "/dev/null" }, -- https://github.com/cmhughes/latexindent.pl/releases/tag/V3.9.3
 		}),
 		nls.builtins.code_actions.shellcheck,
-		nls.builtins.diagnostics.vale,
+		-- nls.builtins.diagnostics.vale,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
