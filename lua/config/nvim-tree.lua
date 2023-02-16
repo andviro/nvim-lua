@@ -1,6 +1,6 @@
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 require("nvim-tree").setup({
-	respect_buf_cwd = true, -- 0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
+	respect_buf_cwd = false, -- 0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
 	-- disables netrw completely
 	disable_netrw = false,
 	-- hijack netrw window on startup

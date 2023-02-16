@@ -6,7 +6,7 @@ local expr_options = { expr = true, silent = true }
 local settings = require("user-conf")
 
 vim.g.mapleader = ";"
-map({ "n" }, "<Space>", "<C-f>", nore_options)
+map({ "n", "v" }, "<Space>", "<C-f>", nore_options)
 
 map({ "c", "i" }, "<C-\\>", "<C-^>", nore_options)
 map({ "c", "i" }, "<C-/>", "<C-^>", nore_options)
@@ -49,6 +49,10 @@ end, default_options)
 
 -- Cancel search highlighting with ESC
 map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_options)
+map("n", "<C-G>", ":nohlsearch<Bar>:echo<CR>", default_options)
+map("n", "<C-G>", "<ESC>", nore_options)
+map("i", "<C-G>", "<ESC>", nore_options)
+map("c", "<C-G>", "<ESC>", nore_options)
 
 -- Autocorrect spelling from previous error
 -- map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", default_options)
